@@ -3,10 +3,14 @@ package com.natalia.StudentManagement.serviceImpl;
 import com.natalia.StudentManagement.entity.Course;
 import com.natalia.StudentManagement.repository.CourseRepository;
 import com.natalia.StudentManagement.service.CourseService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
+@AllArgsConstructor
 public class CourseServiceImpl implements CourseService {
 
     private CourseRepository courseRepository;
