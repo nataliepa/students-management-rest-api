@@ -6,33 +6,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 @Entity
-@Table(name = "student")
-public class Student {
-
+@Table(name = "professor")
+public class Professor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 45)
-    private String firstName;
-
     @Column(nullable = false)
     private String lastName;
+
+    @Column(nullable = false)
+    private String firstName;
 
     @Column(nullable = false, unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
-    Set<CourseRegistration> registrations;
-
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
+    private Set<Course> courses;
 }

@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+import java.util.Set;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -23,4 +26,17 @@ public class Course {
 
     @Column
     private String material;
+
+    @ManyToOne
+    @JoinColumn(name="professor_id", nullable=false)
+    private Professor professor;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<CourseRegistration> registrations;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<Lecture> lectures;
+
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<Book> books;
 }
